@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Livro } from './livro';
 
 @Component({
   selector: 'app-livro',
@@ -8,9 +9,10 @@ import { Component } from '@angular/core';
 })
 export class LivroComponent {
 
-  livro = {
-    titulo: "Código Limpo",
-    autoria: "Robert C. Martin",
-    imagem: "https://m.media-amazon.com/images/I/71dH97FwGbL._AC_UL320_.jpg"
+  livro = input.required<Livro>()
+
+  alternarFavorito() {
+    this.livro().favorito = !this.livro().favorito
   }
+
 }
